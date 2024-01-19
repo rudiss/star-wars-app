@@ -77,12 +77,6 @@ Components that render the individual pieces of data for characters and planets,
 
 A skeleton component displayed while data is being fetched.
 
-## Custom Hooks
-
-### `useApi`
-
-A custom hook for fetching data from an API. It manages the API URL, data, loading state, and any errors.
-
 ## Running Tests
 
 To run tests, use the following command:
