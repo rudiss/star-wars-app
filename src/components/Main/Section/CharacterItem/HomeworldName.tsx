@@ -12,7 +12,7 @@ const HomeworldName: React.FC<HomeworldNameProps> = ({ homeworldId }) => {
     const fetchHomeworld = async () => {
       try {
         const response = await fetch(
-          `http://swapi.dev/api/planets/${homeworldId}`
+          `https://swapi.dev/api/planets/${homeworldId}`
         );
         const planetsData = await response.json();
         setHomeworld(planetsData.name);
