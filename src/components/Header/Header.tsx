@@ -1,23 +1,23 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Header: React.FC = () => {
   return (
     <Container>
       <Title>Star Wars Characters</Title>
-      <Description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua.
+      <Description>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
       </Description>
     </Container>
-  )
-}
+  );
+};
 
 export default Header;
 
 const Container = styled.div`
   max-width: 960px;
 `;
-
 
 const Title = styled.h1`
   color: #333;

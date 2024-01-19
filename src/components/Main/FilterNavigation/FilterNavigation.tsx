@@ -86,7 +86,7 @@ const FilterContent = styled.div`
   }
   select {
     border: none;
-    border-bottom: 1px solid #C8C8C8;
+    border-bottom: 1px solid #c8c8c8;
     min-width: 190px;
     max-width: 239.499px;
     padding: 0px 20px 7px 0px;

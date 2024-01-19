@@ -1,26 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 
 interface HomeworldNameProps {
   homeworldId: string | null;
 }
 
 const HomeworldName: React.FC<HomeworldNameProps> = ({ homeworldId }) => {
-  const [homeworld, setHomeworld] = useState<string>('');
+  const [homeworld, setHomeworld] = useState<string>("");
 
-    useEffect(() => {
+  useEffect(() => {
     const fetchHomeworld = async () => {
       try {
-        const response = await fetch(`http://swapi.dev/api/planets/${homeworldId}`);
+        const response = await fetch(
+          `http://swapi.dev/api/planets/${homeworldId}`
+        );
         const planetsData = await response.json();
         setHomeworld(planetsData.name);
       } catch (error) {
-        console.error('Error fetching planets:', error);
+        console.error("Error fetching planets:", error);
       }
     };
 
     fetchHomeworld();
-    }, [homeworldId]);
+  }, [homeworldId]);
 
   return <Homeworld>{homeworld}</Homeworld>;
 };

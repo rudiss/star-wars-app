@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 interface CharacterNameProps {
   name?: string;
@@ -17,7 +17,6 @@ const Name = styled.h2`
   line-height: 28px;
   letter-spacing: 1px;
   margin: 0;
-
 `;
 
 export default CharacterName;

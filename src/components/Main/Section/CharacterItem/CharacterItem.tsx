@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import CharacterImage from './CharacterImage';
-import CharacterName from './CharacterName';
-import HomeworldName from './HomeworldName';
+import React from "react";
+import styled from "styled-components";
+import CharacterImage from "./CharacterImage";
+import CharacterName from "./CharacterName";
+import HomeworldName from "./HomeworldName";
 
 export interface People {
   name?: string;
@@ -39,8 +39,11 @@ const CharacterItem: React.FC<CharacterItemProps> = ({ data }) => {
   return (
     <Container>
       <CharacterImage
-        imageUrl={`https://picsum.photos/seed/${data?.height === 'unknown' ? 400 : data?.height}/${data?.height === 'unknown' ? 250 : data?.height}?grayscale`}
-        altText={data?.name} />
+        imageUrl={`https://picsum.photos/seed/${
+          data?.height === "unknown" ? 400 : data?.height
+        }/${data?.height === "unknown" ? 250 : data?.height}?grayscale`}
+        altText={data?.name}
+      />
       <TextWrapper>
         <CharacterName name={data.name} />
         <HomeworldName homeworldId={homeworldId} />
@@ -54,8 +57,7 @@ const CharacterItem: React.FC<CharacterItemProps> = ({ data }) => {
   );
 };
 
-export const TextWrapper = styled.div`
-`;
+export const TextWrapper = styled.div``;
 
 export const StatusWrapper = styled.div`
   margin-top: 13px;

@@ -24,23 +24,23 @@ const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleSelectFilter = async (selectedFilter: string) => {
-  setSelectedFilter(selectedFilter); // Update the selected filter state
-  setIsLoading(true); // Set loading state to true
+    setSelectedFilter(selectedFilter); // Update the selected filter state
+    setIsLoading(true); // Set loading state to true
 
-  let apiUrl = selectedFilter === "Planets" ? planetsApi : peopleApi;
+    let apiUrl = selectedFilter === "Planets" ? planetsApi : peopleApi;
 
-  try {
-    const response = await fetch(apiUrl);
-    const data = await response.json();
-    setData(data.results);
-    setFilteredData(data.results); // Update filtered data
-    setNextPage(data.next); // Update nextPage for pagination
-  } catch (error) {
-    console.error(`Error fetching data from ${apiUrl}:`, error);
-  } finally {
-    setIsLoading(false); // Set loading state to false
-  }
-};
+    try {
+      const response = await fetch(apiUrl);
+      const data = await response.json();
+      setData(data.results);
+      setFilteredData(data.results); // Update filtered data
+      setNextPage(data.next); // Update nextPage for pagination
+    } catch (error) {
+      console.error(`Error fetching data from ${apiUrl}:`, error);
+    } finally {
+      setIsLoading(false); // Set loading state to false
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,31 +60,34 @@ const App: React.FC = () => {
   }, []);
 
   const handleLoadMore = async () => {
-  if (!nextPage) return alert("No more data to load");
-  if (nextPage && !isLoading) {
-    setIsLoading(true); // Start loading
-    try {
-      const response = await fetch(nextPage);
-      const newPeoplesData = await response.json();
+    if (!nextPage) return alert("No more data to load");
+    if (nextPage && !isLoading) {
+      setIsLoading(true); // Start loading
+      try {
+        const response = await fetch(nextPage);
+        const newPeoplesData = await response.json();
 
-      if (selectedFilter === "All" || selectedFilter === "Characters") {
-        setData([...data, ...newPeoplesData.results]); // Append new data
-        setFilteredData([...filteredData, ...newPeoplesData.results]); // Append new data to filtered data as well
-      } else if (selectedFilter === "Planets") {
-        // Here you handle appending planet data
-        // This assumes you have a separate state or way to handle planet data
-        // Adjust this part based on how you manage your state
-        const newPlanetData = [...filteredData as Planet[], ...newPeoplesData.results];
-        setFilteredData(newPlanetData);
+        if (selectedFilter === "All" || selectedFilter === "Characters") {
+          setData([...data, ...newPeoplesData.results]); // Append new data
+          setFilteredData([...filteredData, ...newPeoplesData.results]); // Append new data to filtered data as well
+        } else if (selectedFilter === "Planets") {
+          // Here you handle appending planet data
+          // This assumes you have a separate state or way to handle planet data
+          // Adjust this part based on how you manage your state
+          const newPlanetData = [
+            ...(filteredData as Planet[]),
+            ...newPeoplesData.results,
+          ];
+          setFilteredData(newPlanetData);
+        }
+
+        setNextPage(newPeoplesData.next); // Update the next page URL
+      } catch (error) {
+        console.error("Error fetching more people:", error);
       }
-
-      setNextPage(newPeoplesData.next); // Update the next page URL
-    } catch (error) {
-      console.error("Error fetching more people:", error);
+      setIsLoading(false); // End loading
     }
-    setIsLoading(false); // End loading
-  }
-};
+  };
 
   return (
     <Main>

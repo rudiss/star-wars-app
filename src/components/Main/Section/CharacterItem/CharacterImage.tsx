@@ -1,12 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 interface CharacterImageProps {
   imageUrl?: string;
   altText?: string;
 }
 
-const CharacterImage: React.FC<CharacterImageProps> = ({ imageUrl, altText }) => {
+const CharacterImage: React.FC<CharacterImageProps> = ({
+  imageUrl,
+  altText,
+}) => {
   return <Image src={imageUrl} alt={`Image of ${altText}`} />;
 };
 

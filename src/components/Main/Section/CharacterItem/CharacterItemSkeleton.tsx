@@ -16,7 +16,7 @@ const CharacterItemSkeleton: React.FC<CharacterItemSkeletonProps> = () => {
     <>
       {[...Array(10)].map((_, index) => (
         <Container key={index}>
-          <Skeleton style={{ maxWidth: '430px', width: '100%' }} height={230}  />
+          <Skeleton style={{ maxWidth: "430px", width: "100%" }} height={230} />
           <TextWrapper>
             <Skeleton width={152} style={{ margin: "16px 0 5px" }} />
             <Skeleton width={68} />
