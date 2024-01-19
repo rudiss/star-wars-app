@@ -30,7 +30,7 @@ const App: React.FC = () => {
     let apiUrl = selectedFilter === "Planets" ? planetsApi : peopleApi;
 
     try {
-      const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl, {mode:'cors'});
       const data = await response.json();
       setData(data.results);
       setFilteredData(data.results); // Update filtered data
