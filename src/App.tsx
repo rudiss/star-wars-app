@@ -13,8 +13,8 @@ import PlanetItem, {
 } from "./components/Main/Section/CharacterItem/PlanetItem";
 
 type Peoples = People[];
-const peopleApi = "http://swapi.dev/api/people";
-const planetsApi = "http://swapi.dev/api/planets";
+const peopleApi = "https://swapi.dev/api/people";
+const planetsApi = "https://swapi.dev/api/planets";
 
 const App: React.FC = () => {
   const [data, setData] = useState<Peoples>([]);
